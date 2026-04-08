@@ -9,3 +9,22 @@ function getComputerChoice() {
 	return randomChoice;
 }
 console.log(getComputerChoice());
+
+// declare function name
+// create prompt box
+// return player input
+
+function getHumanChoice() {
+	const humanChoice = prompt("Choose Wisely");
+	return humanChoice;
+}
+console.log(getHumanChoice());
+
+// keep score
+
+const humanScore = 0;
+const computerScore = 0;
+
+// declare function name and parameters
+// declare variables
+//
