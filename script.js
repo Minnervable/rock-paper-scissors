@@ -4,27 +4,96 @@
 // define return value
 
 function getComputerChoice() {
-	const choices = ["Rock", "Paper", "Scissors"];
+	const choices = ["rock", "paper", "scissors"];
 	const randomChoice = choices[Math.floor(Math.random() * choices.length)];
 	return randomChoice;
 }
-console.log(getComputerChoice());
+// console.log(getComputerChoice());
 
 // declare function name
 // create prompt box
 // return player input
 
 function getHumanChoice() {
-	const humanChoice = prompt("Choose Wisely");
+	const humanChoice = prompt("Choose Wisely").toLowerCase();
 	return humanChoice;
 }
-console.log(getHumanChoice());
+// console.log(getHumanChoice());
 
 // keep score
+// these will be incremented later based on the winner of each round
 
-const humanScore = 0;
-const computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
-// declare function name and parameters
-// declare variables
-//
+// play game encompasses the logic for the whole game
+// play round holds the logic for each round one at a time
+// declare variable to assign winner
+// if else statements including the logic for each choice
+// inside each if else the winner is incremented based on the winner
+// the scores are not incremented and reassigned if the score is a draw
+
+function playGame() {
+	function playRound(humanChoice, computerChoice) {
+		let winner;
+		if (humanChoice == "rock") {
+			if (computerChoice == "paper") {
+				console.log("You lose! Paper beats rock!");
+				winner = computerScore += 1;
+				console.log(computerScore, humanScore);
+			} else if (computerChoice == "scissors") {
+				console.log("You win! Rock beats scissors!");
+				winner = humanScore += 1;
+				console.log(computerScore, humanScore);
+			} else if (computerChoice == "rock") {
+				console.log("It's a tie!");
+				console.log(computerScore, humanScore);
+			}
+		}
+		if (humanChoice == "paper") {
+			if (computerChoice == "rock") {
+				console.log("You win! Paper beats rock!");
+				winner = humanScore += 1;
+				console.log(computerScore, humanScore);
+			} else if (computerChoice == "scissors") {
+				console.log("You lose! Scissors beats paper!");
+				winner = computerScore += 1;
+				console.log(computerScore, humanScore);
+			} else if (computerChoice == "paper") {
+				console.log("It's a tie!");
+				console.log(computerScore, humanScore);
+			}
+		}
+		if (humanChoice == "scissors") {
+			if (computerChoice == "rock") {
+				console.log("You lose! Rock beats scissors");
+				winner = computerScore += 1;
+				console.log(computerScore, humanScore);
+			} else if (computerChoice == "paper") {
+				console.log("You win! Scissors beats paper");
+				winner = humanScore += 1;
+				console.log(computerScore, humanScore);
+			} else if (computerChoice == "scissors") {
+				console.log("It's a tie!");
+				console.log(computerScore, humanScore);
+			}
+		}
+	}
+	// play five rounds keeping score
+	// after all five rounds a winner of the game is declared
+
+	playRound(getHumanChoice(), getComputerChoice());
+	playRound(getHumanChoice(), getComputerChoice());
+	playRound(getHumanChoice(), getComputerChoice());
+	playRound(getHumanChoice(), getComputerChoice());
+	playRound(getHumanChoice(), getComputerChoice());
+
+	if (computerScore > humanScore) {
+		console.log("You lost! Play again?");
+	} else if (computerScore < humanScore) {
+		console.log("You win! Good Job!");
+	} else {
+		console.log("Draw! You'll win next time!");
+	}
+}
+playGame();
