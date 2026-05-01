@@ -79,14 +79,22 @@ function playGame() {
 			}
 		}
 	}
-	// play five rounds keeping score
-	// after all five rounds a winner of the game is declared
+	// play until one person reaches five points
+	//
+	const rockButton = document.querySelector("#rock");
+	rockButton.addEventListener("click", function () {
+		playRound("rock", getComputerChoice());
+	});
 
-	playRound(getHumanChoice(), getComputerChoice());
-	playRound(getHumanChoice(), getComputerChoice());
-	playRound(getHumanChoice(), getComputerChoice());
-	playRound(getHumanChoice(), getComputerChoice());
-	playRound(getHumanChoice(), getComputerChoice());
+	const paperButton = document.querySelector("#paper");
+	paperButton.addEventListener("click", function () {
+		playRound("paper", getComputerChoice());
+	});
+
+	const scissorsButton = document.querySelector("#scissors");
+	scissorsButton.addEventListener("click", function () {
+		playRound("scissors", getComputerChoice());
+	});
 
 	if (computerScore > humanScore) {
 		console.log("You lost! Play again?");
